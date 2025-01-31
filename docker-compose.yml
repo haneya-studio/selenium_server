@@ -1,0 +1,17 @@
+services: 
+  selenium_server:
+    image: selenium/standalone-chrome:latest
+    container_name: selenium_chrome
+    ports:
+      - "4444:4444"
+      - "7900:7900"
+    shm_size: "2g"
+    restart: unless-stopped
+  jupyter_selenium:
+    build: "./jupyter"
+    container_name: jupyter_selenium
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./jupyter/selenium_test.ipynb:/home/jovyan/selenium_test.ipynb
+    restart: unless-stopped
