@@ -1,12 +1,31 @@
 services: 
-  selenium_server:
+  selenium_server_chrome:
     image: selenium/standalone-chrome:latest
-    container_name: selenium_chrome
+    container_name: selenium_server_chrome
     ports:
       - "4444:4444"
-      - "7900:7900"
+      - "5900:5900"
     shm_size: "2g"
     restart: unless-stopped
+
+  selenium_server_chromium:
+    image: selenium/standalone-chromium:latest
+    container_name: selenium_server_chromium
+    ports:
+      - "4445:4444"
+      - "5901:5900"
+    shm_size: "2g"
+    restart: unless-stopped
+
+  selenium_server_firefox:
+    image: selenium/standalone-firefox:latest
+    container_name: selenium_server_firefox
+    ports:
+      - "4446:4444"
+      - "5902:5900"
+    shm_size: "2g"
+    restart: unless-stopped
+
   jupyter_selenium:
     build: "./jupyter"
     container_name: jupyter_selenium
