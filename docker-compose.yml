@@ -26,6 +26,15 @@ services:
     shm_size: "2g"
     restart: unless-stopped
 
+  selenium_server_edge:
+    image: selenium/standalone-edge:latest
+    container_name: selenium_server_edge
+    ports:
+      - "4447:4444"
+      - "5903:5900"
+    shm_size: "2g"
+    restart: unless-stopped
+
   jupyter_selenium:
     build: "./jupyter"
     container_name: jupyter_selenium
